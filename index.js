@@ -45,23 +45,35 @@ function validate() {
 function handleSubmit(e) {
   e.preventDefault();
   if (validate()) {
-    if (dayInp.value > day) {
-      day = day + months[month - 1];
-      month = month - 1;
-    }
-    if (monthInp.value > month) {
-      month = month + 12;
-      year = year - 1;
+    const inputDay = parseInt(dayInp.value);
+    const inputMonth = parseInt(monthInp.value);
+    const inputYear = parseInt(yearInp.value);
+
+    const currentDate = new Date();  // Data curentă
+    let currentDay = currentDate.getDate();
+    let currentMonth = 1 + currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    if (inputDay > currentDay) {
+      currentMonth = currentMonth - 1;
+      currentDay = currentDay + months[currentMonth - 1];
     }
 
-    const d = day - dayInp.value;
-    const m = month - monthInp.value;
-    const y = year - yearInp.value;
+    if (inputMonth > currentMonth) {
+      currentYear = currentYear - 1;
+      currentMonth = currentMonth + 12;
+    }
+
+    const d = currentDay - inputDay;
+    const m = currentMonth - inputMonth;
+    const y = currentYear - inputYear;
 
     dayOtp.innerHTML = d;
     monthOtp.innerHTML = m;
     yearOtp.innerHTML = y;
   }
 }
+
+
 
 form.addEventListener("submit", handleSubmit);
