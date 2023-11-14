@@ -7,10 +7,8 @@ const monthOtp = document.getElementById("MM");
 const yearOtp = document.getElementById("YY");
 
 const form = document.querySelector("form");
-console.log(form)
 
 const date = new Date();
-console.log(date)
 let day = date.getDate();
 let month = 1 + date.getMonth();
 let year = date.getFullYear();
@@ -49,7 +47,7 @@ function handleSubmit(e) {
     const inputMonth = parseInt(monthInp.value);
     const inputYear = parseInt(yearInp.value);
 
-    const currentDate = new Date();  // Data curentă
+    const currentDate = new Date(); 
     let currentDay = currentDate.getDate();
     let currentMonth = 1 + currentDate.getMonth();
     let currentYear = currentDate.getFullYear();
